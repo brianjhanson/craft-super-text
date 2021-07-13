@@ -1,0 +1,28 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Text Tag plugin for Craft CMS
+ *
+ * TextTag Field Settings
+ *
+ * @author    Brian Hanson
+ * @copyright Copyright (c) 2021 Brian Hanson
+ * @link      https://brianhanson.net
+ * @package   TextTag
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("brianjhanson\\texttag\\assetbundles\\field\\TextTagFieldAsset") %}
+
+{{ forms.checkboxGroupField({
+  label: 'Available Tags',
+  instructions: 'Select the tags you would like available.',
+  id: 'availableTags',
+  name: 'availableTags',
+  options: options,
+  values: values | default([]),
+  value: field['availableTags']
+}) }}
