@@ -10,13 +10,11 @@
 
 namespace brianjhanson\texttag\models;
 
-use brianjhanson\texttag\TextTag;
-
-use Craft;
 use craft\base\Model;
 use craft\helpers\Html;
 use craft\helpers\Json;
 use craft\helpers\Template;
+use Twig\Markup;
 
 /**
  * @author    Brian Hanson
@@ -35,36 +33,25 @@ class TextTagModel extends Model
      */
     public $tag = '';
 
+    public function getString($options = [])
+    {
+        return Html::tag($this->tag, $this->text, $options);
+    }
+
     /**
      * @return string
      */
     public function __toString()
     {
-        return Html::tag($this->tag, $this->text);
+        return $this->getString();
     }
 
-
-
     /**
-     * TextTagModel constructor.
-     *
-     * @param $value
+     * @return Markup
      */
-    public function __construct($value)
+    public function getHtml($options = [])
     {
-
-        if (!$value) {
-            return;
-        }
-
-        if (is_string($value)) {
-            $data = Json::decode($value);
-            $this->text = $data['text'];
-            $this->tag = $data['tag'];
-        } else {
-            $this->text = $value['text'];
-            $this->tag = $value['tag'];
-        }
+        return Template::raw($this->getString($options));
     }
 
     /**

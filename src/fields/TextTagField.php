@@ -75,7 +75,22 @@ class TextTagField extends Field
      */
     public function normalizeValue($value, ElementInterface $element = null)
     {
-        return new TextTagModel($value);
+        if (is_string($value)) {
+            $value = Json::decodeIfJson($value);
+        }
+
+        if ($value instanceof TextTagModel) {
+            return $value;
+        } elseif (is_array($value)) {
+            $value = new TextTagModel($value);
+        } else {
+            $value = new TextTagModel([
+                'text' => '',
+                'tag' => 'p'
+            ]);
+        }
+
+        return $value;
     }
 
     /**
