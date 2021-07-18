@@ -12,23 +12,18 @@ namespace brianjhanson\texttag\fields;
 
 use brianjhanson\texttag\assetbundles\field\TextTagFieldAsset;
 use brianjhanson\texttag\models\TextTagModel;
-use brianjhanson\texttag\TextTag;
-
 use Craft;
 use craft\base\ElementInterface;
-use craft\base\Field;
-use craft\helpers\Html;
-use craft\helpers\Template;
-use craft\web\View;
-use yii\db\Schema;
+use craft\fields\PlainText;
 use craft\helpers\Json;
+use yii\db\Schema;
 
 /**
  * @author    Brian Hanson
  * @package   TextTag
  * @since     1.0.0
  */
-class TextTagField extends Field
+class TextTagField extends PlainText
 {
     // Public Properties
     // =========================================================================
