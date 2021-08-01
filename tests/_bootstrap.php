@@ -16,3 +16,6 @@ define('CRAFT_VENDOR_PATH', dirname(__DIR__) . '/vendor');
 $devMode = true;
 
 TestSetup::configureCraft();
+
+// Set the @webroot alias so that the cpresources folder is created in the correct directory
+Craft::setAlias('@webroot', __DIR__ . '/_craft/web');

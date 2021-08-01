@@ -3,7 +3,7 @@
  * craft-super-text module for Craft CMS 3.x
  *
  * @link      https://onedesigncompany.com
- * @copyright Copyright (c) 2021 One Design Company
+ * @copyright Copyright (c) 2021 Brian Hanson
  */
 
 namespace brianjhanson\supertexttests\unit;
@@ -13,7 +13,7 @@ use Codeception\Test\Unit;
 use UnitTester;
 
 /**
- * @author    One Design Company
+ * @author    Brian Hanson
  * @package   craft-super-text
  * @since     1.0.0
  */

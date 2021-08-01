@@ -16,6 +16,7 @@ use Craft;
 use craft\base\ElementInterface;
 use craft\fields\PlainText;
 use craft\helpers\Json;
+use craft\validators\StringValidator;
 use yii\db\Schema;
 
 /**
@@ -77,12 +78,28 @@ class SuperTextField extends PlainText
         return $value;
     }
 
+
     /**
      * @inheritdoc
      */
     public function getElementValidationRules(): array
     {
-        return [];
+        return [
+            'validateText'
+        ];
+    }
+
+    public function validateText(ElementInterface $element)
+    {
+        $value = $element->getFieldValue($this->handle);
+
+        $validator = new StringValidator([
+            'max' => $this->byteLimit ?? $this->charLimit ?? null,
+        ]);
+
+        if (!$validator->validate($value->text, $error)) {
+            $element->addError($this->handle, $error);
+        }
     }
 
     /**
@@ -112,7 +129,11 @@ class SuperTextField extends PlainText
         ];
     }
 
-    protected function createTagOptions($tags)
+    /**
+     * @param $tags
+     * @return array
+     */
+    protected function createTagOptions($tags): array
     {
         $options = [];
 
@@ -145,7 +166,7 @@ class SuperTextField extends PlainText
     /**
      * @inheritdoc
      */
-    public function getSettingsHtml()
+    public function getSettingsHtml(): ?string
     {
         $options = $this->getAllAvailableTagOptions();
         $values = $this->availableTags;

@@ -5,8 +5,7 @@ paths:
   data: tests/_data
   support: tests/_support
   envs: tests/_envs
-settings:
-  bootstrap: _bootstrap.php
+bootstrap: _bootstrap.php
 coverage:
   enabled: true
   include:
@@ -32,8 +31,8 @@ modules:
       migrations: []
       plugins:
         super-text:
-          class: '\brianjhanson\supertext\Supertext'
-          handle: super-text
+          class: '\brianjhanson\supertext\SuperText'
+          handle: 'super-text'
       cleanup: true
       transaction: true
       dbSetup: {clean: true, setupCraft: true}
