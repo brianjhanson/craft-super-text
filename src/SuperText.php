@@ -8,10 +8,9 @@
  * @copyright Copyright (c) 2021 Brian Hanson
  */
 
-namespace brianjhanson\texttag;
+namespace brianjhanson\supertext;
 
-use brianjhanson\texttag\fields\TextTagField as TextTagField;
-
+use brianjhanson\supertext\fields\SuperTextField;
 use Craft;
 use craft\base\Plugin;
 use craft\services\Plugins;
@@ -22,20 +21,17 @@ use craft\events\RegisterComponentTypesEvent;
 use yii\base\Event;
 
 /**
- * Class TextTag
+ * Class SuperText
  *
  * @author    Brian Hanson
- * @package   TextTag
+ * @package   SuperText
  * @since     1.0.0
  *
  */
-class TextTag extends Plugin
+class SuperText extends Plugin
 {
-    // Static Properties
-    // =========================================================================
-
     /**
-     * @var TextTag
+     * @var SuperText
      */
     public static $plugin;
 
@@ -66,7 +62,7 @@ class TextTag extends Plugin
             Fields::class,
             Fields::EVENT_REGISTER_FIELD_TYPES,
             function (RegisterComponentTypesEvent $event) {
-                $event->types[] = TextTagField::class;
+                $event->types[] = SuperTextField::class;
             }
         );
 
@@ -81,15 +77,11 @@ class TextTag extends Plugin
 
         Craft::info(
             Craft::t(
-                'text-tag',
+                'super-text',
                 '{name} plugin loaded',
                 ['name' => $this->name]
             ),
             __METHOD__
         );
     }
-
-    // Protected Methods
-    // =========================================================================
-
 }

@@ -8,10 +8,10 @@
  * @copyright Copyright (c) 2021 Brian Hanson
  */
 
-namespace brianjhanson\texttag\fields;
+namespace brianjhanson\supertext\fields;
 
-use brianjhanson\texttag\assetbundles\field\TextTagFieldAsset;
-use brianjhanson\texttag\models\TextTagModel;
+use brianjhanson\supertext\assetbundles\field\SuperTextFieldAsset;
+use brianjhanson\supertext\models\SuperTextModel;
 use Craft;
 use craft\base\ElementInterface;
 use craft\fields\PlainText;
@@ -20,41 +20,30 @@ use yii\db\Schema;
 
 /**
  * @author    Brian Hanson
- * @package   TextTag
+ * @package   SuperText
  * @since     1.0.0
  */
-class TextTagField extends PlainText
+class SuperTextField extends PlainText
 {
-    // Public Properties
-    // =========================================================================
-
     /**
      * @var array
      */
     public $availableTags;
-
-    // Static Methods
-    // =========================================================================
 
     /**
      * @inheritdoc
      */
     public static function displayName(): string
     {
-        return Craft::t('text-tag', 'Text Tag');
+        return Craft::t('super-text', 'Super Text');
     }
-
-    // Public Methods
-    // =========================================================================
 
     /**
      * @inheritdoc
      */
-    public function rules()
+    public function rules(): array
     {
-        $rules = parent::rules();
-        $rules = array_merge($rules, []);
-        return $rules;
+        return array_merge(parent::rules(), []);
     }
 
     /**
@@ -62,7 +51,7 @@ class TextTagField extends PlainText
      */
     public function getContentColumnType(): string
     {
-        return Schema::TYPE_JSON;
+        return Schema::TYPE_TEXT;
     }
 
     /**
@@ -74,12 +63,12 @@ class TextTagField extends PlainText
             $value = Json::decodeIfJson($value);
         }
 
-        if ($value instanceof TextTagModel) {
+        if ($value instanceof SuperTextModel) {
             return $value;
         } elseif (is_array($value)) {
-            $value = new TextTagModel($value);
+            $value = new SuperTextModel($value);
         } else {
-            $value = new TextTagModel([
+            $value = new SuperTextModel([
                 'text' => '',
                 'tag' => 'p'
             ]);
@@ -91,15 +80,24 @@ class TextTagField extends PlainText
     /**
      * @inheritdoc
      */
+    public function getElementValidationRules(): array
+    {
+        return [];
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function serializeValue($value, ElementInterface $element = null)
     {
-        return parent::serializeValue($value, $element);
+        return $value;
     }
+
 
     /**
      * @return string[]
      */
-    public function getAvailableTags()
+    public function getAllAvailableTags(): array
     {
         return [
             'h1',
@@ -114,10 +112,10 @@ class TextTagField extends PlainText
         ];
     }
 
-    public function getAvailableTagOptions()
+    protected function createTagOptions($tags)
     {
-        $tags = $this->getAvailableTags();
         $options = [];
+
         foreach ($tags as $tag) {
             $options[] = [
                 'value' => $tag,
@@ -129,16 +127,32 @@ class TextTagField extends PlainText
     }
 
     /**
+     * @return array
+     */
+    public function getAllAvailableTagOptions(): array
+    {
+        return $this->createTagOptions($this->getAllAvailableTags());
+    }
+
+    /**
+     * @return array
+     */
+    public function getAvailableTagOptions(): array
+    {
+        return $this->createTagOptions($this->availableTags);
+    }
+
+    /**
      * @inheritdoc
      */
     public function getSettingsHtml()
     {
-        $options = $this->getAvailableTagOptions();
+        $options = $this->getAllAvailableTagOptions();
         $values = $this->availableTags;
 
         // Render the settings template
         return Craft::$app->getView()->renderTemplate(
-            'text-tag/_components/fields/text-tag/settings',
+            'super-text/_components/fields/super-text/settings',
             [
                 'field' => $this,
                 'options' => $options,
@@ -153,7 +167,7 @@ class TextTagField extends PlainText
     public function getInputHtml($value, ElementInterface $element = null): string
     {
         // Register our asset bundle
-        Craft::$app->getView()->registerAssetBundle(TextTagFieldAsset::class);
+        Craft::$app->getView()->registerAssetBundle(SuperTextFieldAsset::class);
 
         // Get our id and namespace
         $id = Craft::$app->getView()->formatInputId($this->handle);
@@ -167,11 +181,11 @@ class TextTagField extends PlainText
             'prefix' => Craft::$app->getView()->namespaceInputId(''),
         ];
         $jsonVars = Json::encode($jsonVars);
-        Craft::$app->getView()->registerJs("$('#{$namespacedId}-field').TextTagTextTag(" . $jsonVars . ");");
+        Craft::$app->getView()->registerJs("$('#{$namespacedId}-field').SuperText(" . $jsonVars . ");");
 
         // Render the input template
         return Craft::$app->getView()->renderTemplate(
-            'text-tag/_components/fields/text-tag/input',
+            'super-text/_components/fields/super-text/input',
             [
                 'name' => $this->handle,
                 'value' => $value,

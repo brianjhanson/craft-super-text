@@ -1,46 +1,46 @@
 {
-    "name": "brianjhanson/craft-text-tag",
-    "description": "Field to create some text and specify which HTML tag it appears as. ",
-    "type": "craft-plugin",
-    "version": "1.0.0",
-    "keywords": [
-        "craft",
-        "cms",
-        "craftcms",
-        "craft-plugin",
-        "text tag"
-    ],
-    "support": {
-        "docs": "https://github.com/brianjhanson/text-tag/blob/master/README.md",
-        "issues": "https://github.com/brianjhanson/text-tag/issues"
-    },
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Brian Hanson",
-            "homepage": "https://brianhanson.net"
-        }
-    ],
-    "require": {
-        "craftcms/cms": "^3.0.0"
-    },
-    "require-dev": {
-      "craftcms/cms": "^3.2.0",
-      "codeception/codeception": "^3.0",
-      "vlucas/phpdotenv": "^3.0"
-    },
-    "autoload": {
-        "psr-4": {
-          "brianjhanson\\texttag\\": "src/"
-        }
-    },
-    "extra": {
-        "name": "Text Tag",
-        "handle": "text-tag",
-        "developer": "Brian Hanson",
-        "developerUrl": "https://brianhanson.net",
-        "documentationUrl": "https://github.com/brianjhanson/text-tag/blob/master/README.md",
-        "changelogUrl": "https://raw.githubusercontent.com/brianjhanson/text-tag/master/CHANGELOG.md",
-        "class": "brianjhanson\\texttag\\TextTag"
+  "name": "brianjhanson/craft-super-text",
+  "description": "Additional features for text fields in Craft CMS",
+  "type": "craft-plugin",
+  "version": "1.0.0",
+  "keywords": [
+    "craft",
+    "cms",
+    "craftcms",
+    "craft-plugin",
+    "text tag"
+  ],
+  "support": {
+    "docs": "https://github.com/brianjhanson/craft-super-text/blob/main/README.md",
+    "issues": "https://github.com/brianjhanson/craft-super-text/issues"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Brian Hanson",
+      "homepage": "https://brianhanson.net"
     }
+  ],
+  "require": {
+    "craftcms/cms": "^3.0.0"
+  },
+  "require-dev": {
+    "craftcms/cms": "^3.2.0",
+    "codeception/codeception": "^3.0",
+    "vlucas/phpdotenv": "^3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "brianjhanson\\supertext\\": "src/"
+    }
+  },
+  "extra": {
+    "name": "Super Text",
+    "handle": "super-text",
+    "developer": "Brian Hanson",
+    "developerUrl": "https://brianhanson.net",
+    "documentationUrl": "https://github.com/brianjhanson/craft-super-text/blob/main/README.md",
+    "changelogUrl": "https://raw.githubusercontent.com/brianjhanson/craft-super-text/main/CHANGELOG.md",
+    "class": "brianjhanson\\supertext\\SuperText"
+  }
 }

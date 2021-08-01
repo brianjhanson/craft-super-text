@@ -3,12 +3,12 @@
 /**
  * Text Tag plugin for Craft CMS 3.x
  *
- * TextTag Field Input
+ * SuperText Field Input
  *
  * @author    Brian Hanson
  * @copyright Copyright (c) 2021 Brian Hanson
  * @link      https://brianhanson.net
- * @package   TextTag
+ * @package   SuperText
  * @since     1.0.0
  */
 #}
@@ -24,7 +24,7 @@
 
 {% set config = {
   id: name|id,
-  name: name,
+  name: 'text',
   value: value.text,
   class: class,
   maxlength: field.charLimit,
@@ -35,14 +35,16 @@
 
 {% namespace name %}
   <div class="flex flex-nowrap items-start">
-    {{ forms.select({
-      id: 'tag',
-      name: 'tag',
-      options: field.getAvailableTagOptions(),
-      size: null,
-      class: 'flex-1',
-      value: value.tag
-    }) }}
+    {% if field.getAvailableTagOptions() | length %}
+      {{ forms.select({
+        id: 'tag',
+        name: 'tag',
+        options: field.getAvailableTagOptions(),
+        size: null,
+        class: 'flex-1',
+        value: value.tag
+      }) }}
+    {% endif %}
 
     {% if field.multiline %}
       {{ forms.textarea(config) }}

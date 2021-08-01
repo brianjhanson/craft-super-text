@@ -3,19 +3,19 @@
 /**
  * Text Tag plugin for Craft CMS
  *
- * TextTag Field Settings
+ * SuperText Field Settings
  *
  * @author    Brian Hanson
  * @copyright Copyright (c) 2021 Brian Hanson
  * @link      https://brianhanson.net
- * @package   TextTag
+ * @package   SuperText
  * @since     1.0.0
  */
 #}
 
 {% import "_includes/forms" as forms %}
 
-{% do view.registerAssetBundle("brianjhanson\\texttag\\assetbundles\\field\\TextTagFieldAsset") %}
+{% do view.registerAssetBundle("brianjhanson\\supertext\\assetbundles\\field\\SuperTextFieldAsset") %}
 
 {{ forms.checkboxGroupField({
   label: 'Available Tags',

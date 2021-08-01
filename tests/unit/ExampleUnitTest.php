@@ -2,25 +2,25 @@
 /**
  * Text Tag plugin for Craft CMS 3.x
  *
- * Field to create some text and specify which HTML tag it appears as. 
+ * Field to create some text and specify which HTML tag it appears as.
  *
  * @link      https://brianhanson.net
  * @copyright Copyright (c) 2021 Brian Hanson
  */
 
-namespace brianjhanson\texttagtests\unit;
+namespace brianjhanson\supertexttests\unit;
 
 use Codeception\Test\Unit;
 use UnitTester;
 use Craft;
-use brianjhanson\texttag\TextTag;
+use brianjhanson\supertext\SuperText;
 
 /**
  * ExampleUnitTest
  *
  *
  * @author    Brian Hanson
- * @package   TextTag
+ * @package   SuperText
  * @since     1.0.0
  */
 class ExampleUnitTest extends Unit
@@ -45,8 +45,8 @@ class ExampleUnitTest extends Unit
     public function testPluginInstance()
     {
         $this->assertInstanceOf(
-            TextTag::class,
-            TextTag::$plugin
+            SuperText::class,
+            SuperText::$plugin
         );
     }
 

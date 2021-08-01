@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2021 Brian Hanson
  */
 
-namespace brianjhanson\texttag\assetbundles\field;
+namespace brianjhanson\supertext\assetbundles\field;
 
 use Craft;
 use craft\web\AssetBundle;
@@ -16,10 +16,10 @@ use craft\web\assets\cp\CpAsset;
 
 /**
  * @author    Brian Hanson
- * @package   TextTag
+ * @package   SuperText
  * @since     1.0.0
  */
-class TextTagFieldAsset extends AssetBundle
+class SuperTextFieldAsset extends AssetBundle
 {
     // Public Methods
     // =========================================================================
@@ -29,18 +29,18 @@ class TextTagFieldAsset extends AssetBundle
      */
     public function init()
     {
-        $this->sourcePath = "@brianjhanson/texttag/assetbundles/field/dist";
+        $this->sourcePath = "@brianjhanson/supertext/assetbundles/field/dist";
 
         $this->depends = [
             CpAsset::class,
         ];
 
         $this->js = [
-            'js/TextTag.js',
+            'js/SuperText.js',
         ];
 
         $this->css = [
-            'css/TextTag.css',
+            'css/SuperText.css',
         ];
 
         parent::init();

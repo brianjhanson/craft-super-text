@@ -31,9 +31,9 @@ modules:
       projectConfig: {}
       migrations: []
       plugins:
-        text-tag:
-          class: '\brianjhanson\texttag\TextTag'
-          handle: text-tag
+        super-text:
+          class: '\brianjhanson\supertext\Supertext'
+          handle: super-text
       cleanup: true
       transaction: true
       dbSetup: {clean: true, setupCraft: true}

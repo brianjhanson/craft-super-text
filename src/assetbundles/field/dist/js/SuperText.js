@@ -1,18 +1,18 @@
 /**
  * Text Tag plugin for Craft CMS
  *
- * TextTag Field JS
+ * SuperText Field JS
  *
  * @author    Brian Hanson
  * @copyright Copyright (c) 2021 Brian Hanson
  * @link      https://brianhanson.net
- * @package   TextTag
- * @since     1.0.0TextTagTextTag
+ * @package   SuperText
+ * @since     1.0.0
  */
 
  ;(function ( $, window, document, undefined ) {
 
-    var pluginName = "TextTagTextTag",
+    var pluginName = "SuperText",
         defaults = {
         };
 

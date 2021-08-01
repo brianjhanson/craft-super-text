@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2021 Brian Hanson
  */
 
-namespace brianjhanson\texttag\models;
+namespace brianjhanson\supertext\models;
 
 use craft\base\Model;
 use craft\helpers\Html;
@@ -18,10 +18,10 @@ use Twig\Markup;
 
 /**
  * @author    Brian Hanson
- * @package   TextTag
+ * @package   SuperText
  * @since     1.0.0
  */
-class TextTagModel extends Model
+class SuperTextModel extends Model
 {
     /**
      * @var string
@@ -33,23 +33,20 @@ class TextTagModel extends Model
      */
     public $tag = '';
 
-    public function getString($options = [])
+    /**
+     * @param array $options
+     * @return string
+     */
+    public function getString(array $options = []): string
     {
         return Html::tag($this->tag, $this->text, $options);
     }
 
     /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->getString();
-    }
-
-    /**
+     * @param array $options
      * @return Markup
      */
-    public function getHtml($options = [])
+    public function getHtml(array $options = []): Markup
     {
         return Template::raw($this->getString($options));
     }
@@ -57,7 +54,7 @@ class TextTagModel extends Model
     /**
      * @inheritdoc
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             [['text', 'tag'], 'string'],

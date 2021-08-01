@@ -1,6 +1,6 @@
 <?php
 
-namespace brianjhanson\texttagtests\acceptance;
+namespace brianjhanson\supertexttests\acceptance;
 
 use Craft;
 use FunctionalTester;
