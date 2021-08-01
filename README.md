@@ -1,12 +1,12 @@
-# Text Tag plugin for Craft CMS 3.x
+# Super Text plugin for Craft CMS 3.x
 
-Field to create some text and specify which HTML tag it appears as. 
+Simple field to extend the default Craft plain text field with additional functionality. 
 
-![Screenshot](resources/img/plugin-logo.png)
+![Screenshot](resources/img/craft-starter.test_admin_entries_home_2-home.png)
 
 ## Requirements
 
-This plugin requires Craft CMS 3.0.0-beta.23 or later.
+This plugin requires Craft CMS 3.4.0 or later.
 
 ## Installation
 
@@ -20,24 +20,14 @@ To install the plugin, follow these instructions.
 
         composer require brianjhanson/super-text
 
-3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Text Tag.
+3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Super Text.
 
-## Text Tag Overview
+## Configuring Super Text
 
--Insert text here-
+TODO
 
-## Configuring Text Tag
+## Using Super Text
 
--Insert text here-
-
-## Using Text Tag
-
--Insert text here-
-
-## Text Tag Roadmap
-
-Some things to do, and ideas for potential features:
-
-* Release it
+TODO
 
 Brought to you by [Brian Hanson](https://brianhanson.net)
